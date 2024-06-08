@@ -26,14 +26,17 @@ class Brain
 {
 	protected:
 	
-	std::string ideas[100];
+	std::string* ideas;
 
 	public:
 	Brain();
+	Brain(const std::string object);
 	Brain(const Brain &copy);
 	~Brain();
 
 	Brain& operator=(const Brain &change);
+	std::string getIdeas(int index) const;
+	void		setIdeas(int index, const std::string& toy);
 };
 
 #endif
