@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.hpp                                       :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpeyre <gpeyre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/08 09:34:26 by gpeyre            #+#    #+#             */
-/*   Updated: 2024/06/08 09:34:26 by gpeyre           ###   ########.fr       */
+/*   Created: 2024/06/08 10:24:37 by gpeyre            #+#    #+#             */
+/*   Updated: 2024/06/08 10:24:37 by gpeyre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGCAT_HPP
-# define WRONGCAT_HPP
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
-#include "WrongAnimal.hpp"
+#include <iostream>
+#include <string>
 
-class WrongCat : public WrongAnimal
+#define BLUE "\033[94m"
+#define RESET "\033[0m"
+#define RED "\033[31m"
+#define GREEN "\033[32m"
+#define YELLOW "\033[33m"
+
+class Brain
 {
-	public:
+	protected:
 	
-	WrongCat();
-	WrongCat(const WrongCat &copy);
-	~WrongCat();
+	std::string ideas[100];
 
-	WrongCat& operator=(const WrongCat &change);
-	void	makeSound() const;
+	public:
+	Brain();
+	Brain(const Brain &copy);
+	~Brain();
+
+	Brain& operator=(const Brain &change);
 };
 
 #endif

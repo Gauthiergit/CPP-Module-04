@@ -1,44 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpeyre <gpeyre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/07 15:18:32 by gpeyre            #+#    #+#             */
-/*   Updated: 2024/06/08 16:40:15 by gpeyre           ###   ########.fr       */
+/*   Created: 2024/06/07 15:27:16 by gpeyre            #+#    #+#             */
+/*   Updated: 2024/06/08 17:04:48 by gpeyre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "Cat.hpp"
 
-Animal::Animal() : type("")
+Cat::Cat() : Animal()
 {
-	std::cout << GREEN << "Constructor Animal called" << RESET << std::endl;
+	std::cout << GREEN << "Constructor Cat called" << RESET << std::endl;
+	this->type = "Cat";
+	this->brain = new Brain();
 }
 
-Animal::~Animal()
+Cat::~Cat()
 {
-	std::cout << GREEN << "Destructor Animal called" << RESET << std::endl;
+	std::cout << GREEN << "Destructor Cat called" << RESET << std::endl;
 }
 
-Animal::Animal(const Animal &copy)
+Cat::Cat(const Cat &copy) : Animal(copy)
 {
 	*this = copy;
 }
 
-Animal& Animal::operator=(const Animal &change)
+Cat& Cat::operator=(const Cat &change)
 {
 	this->type = change.type;
 	return (*this);
 }
 
-void	Animal::makeSound() const
+void	Cat::makeSound() const
 {
-	std::cout << YELLOW << "Ougachaka" << RESET << std::endl;
-}
-
-std::string	Animal::getType() const
-{
-	return (this->type);
+	std::cout << YELLOW << "Meeeoowww" << RESET << std::endl;
 }

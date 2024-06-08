@@ -1,42 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpeyre <gpeyre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/07 11:23:39 by gpeyre            #+#    #+#             */
-/*   Updated: 2024/06/08 16:36:49 by gpeyre           ###   ########.fr       */
+/*   Created: 2024/06/07 15:16:42 by gpeyre            #+#    #+#             */
+/*   Updated: 2024/06/08 17:01:31 by gpeyre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef CAT_HPP
+# define CAT_HPP
 
-#include <iostream>
-#include <string>
+#include "Animal.hpp"
+#include "Brain.hpp"
 
-#define BLUE "\033[94m"
-#define RESET "\033[0m"
-#define RED "\033[31m"
-#define GREEN "\033[32m"
-#define YELLOW "\033[33m"
-
-class Animal
+class Cat : public Animal
 {
-	protected:
-	
-	std::string type;
+	private:
+
+	Brain* brain;
 
 	public:
-	Animal();
-	Animal(const Animal &copy);
-	virtual ~Animal();
+	
+	Cat();
+	Cat(const Cat &copy);
+	virtual ~Cat();
 
-	Animal& operator=(const Animal &change);
-
+	Cat& operator=(const Cat &change);
 	virtual void	makeSound() const;
-	std::string		getType() const;
 };
 
 #endif

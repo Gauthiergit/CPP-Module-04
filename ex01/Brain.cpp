@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.hpp                                       :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpeyre <gpeyre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/08 09:34:26 by gpeyre            #+#    #+#             */
-/*   Updated: 2024/06/08 09:34:26 by gpeyre           ###   ########.fr       */
+/*   Created: 2024/06/08 10:36:11 by gpeyre            #+#    #+#             */
+/*   Updated: 2024/06/08 10:36:11 by gpeyre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGCAT_HPP
-# define WRONGCAT_HPP
+#include "Brain.hpp"
 
-#include "WrongAnimal.hpp"
-
-class WrongCat : public WrongAnimal
+Brain::Brain()
 {
-	public:
-	
-	WrongCat();
-	WrongCat(const WrongCat &copy);
-	~WrongCat();
+	std::cout << GREEN << "Constructor Brain Called" << RESET << std::endl;
+	for(int i = 0; i < 100; i++)
+		ideas[i] = "Play";
+}
 
-	WrongCat& operator=(const WrongCat &change);
-	void	makeSound() const;
-};
+Brain::Brain(const Brain &copy)
+{
+	*this = copy;
+}
 
-#endif
+Brain::~Brain()
+{
+	std::cout << GREEN << "Destructor Brain called" << RESET << std::endl;
+}
+
+Brain& Brain::operator=(const Brain &change)
+{
+	this->ideas = change.ideas;
+	return (*this);
+}
