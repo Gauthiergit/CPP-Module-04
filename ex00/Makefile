@@ -17,6 +17,10 @@ BLUE = \033[94m
 
 SRCS  = main.cpp \
 		Animal.cpp \
+		Dog.cpp \
+		Cat.cpp \
+		WrongAnimal.cpp \
+		WrongCat.cpp
 
 OBJ = $(patsubst $(DIR_SRC)%.cpp,$(DIR_OBJ)%.o,$(SRCS))
 

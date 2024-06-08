@@ -1,43 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpeyre <gpeyre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/07 15:18:32 by gpeyre            #+#    #+#             */
-/*   Updated: 2024/06/07 15:43:06 by gpeyre           ###   ########.fr       */
+/*   Created: 2024/06/07 15:27:16 by gpeyre            #+#    #+#             */
+/*   Updated: 2024/06/08 09:06:35 by gpeyre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "Cat.hpp"
 
-Animal::Animal() : type("")
+Cat::Cat() : Animal()
 {
-	std::cout << "Constructor Animal called" << std::endl;
+	std::cout << "Constructor Cat called" << std::endl;
+	this->type = "Cat";
 }
 
-Animal::~Animal()
+Cat::~Cat()
 {
-	std::cout << "Destructor Animal called" << std::endl;
+	std::cout << "Destructor Cat called" << std::endl;
 }
 
-Animal::Animal(const Animal &copy)
+Cat::Cat(const Cat &copy) : Animal(copy)
 {
 	*this = copy;
 }
 
-Animal& Animal::operator=(const Animal &change)
+Cat& Cat::operator=(const Cat &change)
 {
 	this->type = change.type;
+	return (*this);
 }
 
-void	Animal::makeSound()
+void	Cat::makeSound() const
 {
-	std::cout << "An animal sound" << std::endl;
-}
-
-std::string	Animal::getType() const
-{
-	return (this->type);
+	std::cout << "Meeeoowww" << std::endl;
 }

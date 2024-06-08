@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpeyre <gpeyre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/07 15:27:16 by gpeyre            #+#    #+#             */
-/*   Updated: 2024/06/07 15:37:53 by gpeyre           ###   ########.fr       */
+/*   Created: 2024/06/07 15:14:04 by gpeyre            #+#    #+#             */
+/*   Updated: 2024/06/08 09:58:15 by gpeyre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#ifndef DOG_HPP
+# define DOG_HPP
 
-Cat::Cat() : Animal()
-{
-	std::cout << "Constructor Cat called" << std::endl;
-	this->type = "Cat";
-}
+#include "Animal.hpp"
 
-Cat::~Cat()
+class Dog : public Animal
 {
-	std::cout << "Destructor Cat called" << std::endl;
-}
+	public:
+	
+	Dog();
+	Dog(const Dog &copy);
+	virtual ~Dog();
 
-Cat::Cat(const Cat &copy)
-{
-	*this = copy;
-}
+	Dog& operator=(const Dog &change);
+	virtual void	makeSound() const;
+};
 
-Cat& Cat::operator=(const Cat &change)
-{
-	this->type = change.type;
-}
-
-void	Cat::makeSound()
-{
-	std::cout << "Meeeoowww" << std::endl;
-}
+#endif

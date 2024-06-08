@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpeyre <gpeyre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/07 15:14:04 by gpeyre            #+#    #+#             */
-/*   Updated: 2024/06/07 15:38:07 by gpeyre           ###   ########.fr       */
+/*   Created: 2024/06/07 15:16:42 by gpeyre            #+#    #+#             */
+/*   Updated: 2024/06/08 09:58:05 by gpeyre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef CAT_HPP
+# define CAT_HPP
 
 #include "Animal.hpp"
 
-class Dog : public Animal
+class Cat : public Animal
 {
 	public:
 	
-	Dog();
-	Dog(const Dog &copy);
-	~Dog();
+	Cat();
+	Cat(const Cat &copy);
+	virtual ~Cat();
 
-	Dog& operator=(const Dog &change);
-	void	makeSound();
+	Cat& operator=(const Cat &change);
+	virtual void	makeSound() const;
 };
 
 #endif
