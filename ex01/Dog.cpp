@@ -6,7 +6,7 @@
 /*   By: gpeyre <gpeyre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 15:22:24 by gpeyre            #+#    #+#             */
-/*   Updated: 2024/06/09 10:57:16 by gpeyre           ###   ########.fr       */
+/*   Updated: 2024/06/09 11:57:26 by gpeyre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,7 @@ Dog& Dog::operator=(const Dog &change)
 {
 	this->type = change.type;
 	if (this != &change)
-	{
-		// delete this->brain;
 		this->brain = new Brain(*change.brain);
-	}
 	return (*this);
 }
 

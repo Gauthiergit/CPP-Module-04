@@ -6,13 +6,13 @@
 /*   By: gpeyre <gpeyre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 15:27:16 by gpeyre            #+#    #+#             */
-/*   Updated: 2024/06/09 11:57:26 by gpeyre           ###   ########.fr       */
+/*   Updated: 2024/06/09 11:39:03 by gpeyre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat() : Animal()
+Cat::Cat() : AAnimal()
 {
 	std::cout << GREEN << "Constructor Cat called" << RESET << std::endl;
 	this->type = "Cat";
@@ -25,7 +25,7 @@ Cat::~Cat()
 	delete this->brain;
 }
 
-Cat::Cat(const Cat &copy) : Animal(copy)
+Cat::Cat(const Cat &copy) : AAnimal(copy)
 {
 	*this = copy;
 }

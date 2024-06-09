@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpeyre <gpeyre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/07 15:27:16 by gpeyre            #+#    #+#             */
-/*   Updated: 2024/06/09 11:57:26 by gpeyre           ###   ########.fr       */
+/*   Created: 2024/06/07 15:22:24 by gpeyre            #+#    #+#             */
+/*   Updated: 2024/06/09 11:38:44 by gpeyre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "Dog.hpp"
 
-Cat::Cat() : Animal()
+Dog::Dog() : AAnimal()
 {
-	std::cout << GREEN << "Constructor Cat called" << RESET << std::endl;
-	this->type = "Cat";
-	this->brain = new Brain("Rope");
+	std::cout << GREEN << "Constructor Dog called" << RESET << std::endl;
+	this->type = "Dog";
+	this->brain = new Brain("Ball");
 }
 
-Cat::~Cat()
+Dog::~Dog()
 {
-	std::cout << GREEN << "Destructor Cat called" << RESET << std::endl;
+	std::cout << GREEN << "Destructor Dog called" << RESET << std::endl;
 	delete this->brain;
 }
 
-Cat::Cat(const Cat &copy) : Animal(copy)
+Dog::Dog(const Dog &copy) : AAnimal(copy)
 {
 	*this = copy;
 }
 
-Cat& Cat::operator=(const Cat &change)
+Dog& Dog::operator=(const Dog &change)
 {
 	this->type = change.type;
 	if (this != &change)
@@ -38,17 +38,17 @@ Cat& Cat::operator=(const Cat &change)
 	return (*this);
 }
 
-void	Cat::makeSound() const
+void	Dog::makeSound() const
 {
-	std::cout << YELLOW << "Meeeoowww" << RESET << std::endl;
+	std::cout << YELLOW << "WOUAF!" << RESET << std::endl;
 }
 
-std::string	Cat::getBrain(int index) const
+std::string	Dog::getBrain(int index) const
 {
 	return (this->brain->getIdeas(index));
 }
 
-void 		Cat::setBrain(int index, const std::string& toy)
+void 		Dog::setBrain(int index, const std::string& toy)
 {
 	this->brain->setIdeas(index, toy);
 }
