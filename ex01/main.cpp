@@ -6,7 +6,7 @@
 /*   By: gpeyre <gpeyre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 15:39:52 by gpeyre            #+#    #+#             */
-/*   Updated: 2024/06/09 01:11:08 by gpeyre           ###   ########.fr       */
+/*   Updated: 2024/06/09 11:04:28 by gpeyre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 int main()
 {
-/* 	const Animal* meta = new Animal();
+	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
 	std::cout << BLUE << "Type: " << RESET << j->getType() << std::endl;
@@ -34,7 +34,7 @@ int main()
 	delete j;
 	delete i;
 
-	std::cout << std::endl;
+	std::cout << YELLOW << "-------------------------------------------------------------------" << RESET << std::endl;
 	const WrongAnimal* a = new WrongCat();
 	const WrongCat* b = new WrongCat();
 	std::cout << BLUE << "Type: " << RESET << a->getType() << std::endl;
@@ -46,20 +46,31 @@ int main()
 	delete a;
 	delete b;
 
-	std::cout << std::endl; */
-	Animal*	animals = new Animal[4];
+	std::cout << YELLOW << "-------------------------------------------------------------------" << RESET << std::endl;
+	Animal*	animals[4];
 	for (int i = 0; i < 2; i++)
-		new(&animals[i]) Cat();
-	for (int i = 2; i < 3; i++)
-		new(&animals[i]) Dog();
-	delete[] animals;
-
-	std::cout << std::endl;
-	Dog a;
-	Dog b = a;
-	a.setBrain(0, "Play with bones");
+		animals[i] = new Cat();	
+	for (int i = 2; i < 4; i++)
+		animals[i] = new Dog();
+	for (int i = 0; i < 4; i++)
+		animals[i]->makeSound();
 	
-	std::cout << a.getBrain(0) << std::endl;
-	std::cout << b.getBrain(0) << std::endl;
+	std::cout << YELLOW << "-------------------------------------------------------------------" << RESET << std::endl;
+	for (int i = 0; i < 10; i++)
+		std::cout << dynamic_cast<Dog*>(animals[3])->getBrain(i) << std::endl;
+
+	std::cout << YELLOW << "-------------------------------------------------------------------" << RESET << std::endl;
+	for (int i = 0; i < 10; i++)
+		std::cout << dynamic_cast<Cat*>(animals[0])->getBrain(i) << std::endl;
+	for (int i = 0; i < 4; i++)
+		delete animals[i];
+
+	std::cout << YELLOW << "-------------------------------------------------------------------" << RESET << std::endl;
+	Dog c;
+	Dog d = c;
+	c.setBrain(0, "Play with bones");
+	
+	std::cout << c.getBrain(0) << std::endl;
+	std::cout << d.getBrain(0) << std::endl;
 	return (0);
 }

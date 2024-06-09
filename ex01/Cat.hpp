@@ -6,7 +6,7 @@
 /*   By: gpeyre <gpeyre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 15:16:42 by gpeyre            #+#    #+#             */
-/*   Updated: 2024/06/08 20:59:04 by gpeyre           ###   ########.fr       */
+/*   Updated: 2024/06/09 10:56:21 by gpeyre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ class Cat : public Animal
 
 	Cat& operator=(const Cat &change);
 	virtual void	makeSound() const;
+
+	std::string	getBrain(int index) const;
+	void 		setBrain(int index, const std::string& toy);
 };
 
 #endif

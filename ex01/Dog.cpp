@@ -6,7 +6,7 @@
 /*   By: gpeyre <gpeyre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 15:22:24 by gpeyre            #+#    #+#             */
-/*   Updated: 2024/06/09 01:01:43 by gpeyre           ###   ########.fr       */
+/*   Updated: 2024/06/09 10:57:16 by gpeyre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ std::string	Dog::getBrain(int index) const
 {
 	return (this->brain->getIdeas(index));
 }
+
 void 		Dog::setBrain(int index, const std::string& toy)
 {
 	this->brain->setIdeas(index, toy);

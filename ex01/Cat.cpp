@@ -6,7 +6,7 @@
 /*   By: gpeyre <gpeyre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 15:27:16 by gpeyre            #+#    #+#             */
-/*   Updated: 2024/06/08 21:33:57 by gpeyre           ###   ########.fr       */
+/*   Updated: 2024/06/09 10:57:16 by gpeyre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,14 @@ Cat& Cat::operator=(const Cat &change)
 void	Cat::makeSound() const
 {
 	std::cout << YELLOW << "Meeeoowww" << RESET << std::endl;
+}
+
+std::string	Cat::getBrain(int index) const
+{
+	return (this->brain->getIdeas(index));
+}
+
+void 		Cat::setBrain(int index, const std::string& toy)
+{
+	this->brain->setIdeas(index, toy);
 }
