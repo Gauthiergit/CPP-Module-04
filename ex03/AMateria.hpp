@@ -23,6 +23,8 @@
 #define GREEN "\033[32m"
 #define YELLOW "\033[33m"
 
+class ICharacter;
+
 class AMateria
 {
 	protected:
@@ -34,11 +36,12 @@ class AMateria
 	AMateria();
 	AMateria(std::string const& type);
 	AMateria(const AMateria &copy);
-	~AMateria();
+	virtual ~AMateria();
 
 	AMateria& operator=(const AMateria &change);
 
 	std::string const& getType() const;
+	virtual void	setType(std::string const& type);
 	virtual AMateria* clone() const = 0;
 	virtual void use(ICharacter& target);
 };

@@ -12,12 +12,12 @@
 
 #include "Ice.hpp"
 
-Ice::Ice() : AMateria(), _type("")
+Ice::Ice() : AMateria("ice")
 {
 	std::cout  << GREEN << "Default constructor Ice called" << RESET << std::endl;
 }
 
-Ice::Ice(std::string const& type) : AMateria(type), _type(type)
+Ice::Ice(std::string const& type) : AMateria(type)
 {
 	std::cout  << GREEN << "Constructor with parameter Ice called" << RESET << std::endl;
 }
@@ -32,17 +32,18 @@ Ice::~Ice()
 	std::cout  << GREEN << "Destructor Ice called" << RESET << std::endl;
 }
 
-Ice& operator=(const Ice &change)
+Ice& Ice::operator=(const Ice &change)
 {
 	this->_type = change._type;
+	return (*this);
 }
 
-Ice::Ice* clone() const
+Ice* Ice::clone() const
 {
 	return (new Ice(*this));
 }
 
 void Ice::use(ICharacter& target)
 {
-	std::cout << YELLOW << "Shoots an ice bolt at " << target.getName << std::endl;
+	std::cout << YELLOW << "Shoots an ice bolt at " << BLUE << target.getName() << RESET << std::endl;
 }

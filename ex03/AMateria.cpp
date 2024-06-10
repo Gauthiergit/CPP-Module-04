@@ -32,9 +32,10 @@ AMateria::~AMateria()
 	std::cout  << GREEN << "Destructor AMateria called" << RESET << std::endl;
 }
 
-AMateria& operator=(const AMateria &change)
+AMateria& AMateria::operator=(const AMateria &change)
 {
 	this->_type = change._type;
+	return (*this);
 }
 
 std::string const& AMateria::getType() const
@@ -42,12 +43,12 @@ std::string const& AMateria::getType() const
 	return (this->_type);
 }
 
-AMateria::AMateria* clone() const
+void	AMateria::setType(std::string const& type)
 {
-	return (new AMateria(*this));
+	this->_type = type;
 }
 
 void AMateria::use(ICharacter& target)
 {
-	std::cout << YELLOW << target.getName << " do somthing" << std::endl;
+	std::cout << YELLOW << target.getName() << " do somthing" << std::endl;
 }

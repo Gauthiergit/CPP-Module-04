@@ -36,6 +36,6 @@ class Character : public ICharacter
 	virtual void equip(AMateria* m);
 	virtual void unequip(int idx);
 	virtual void use(int idx, ICharacter& target);
-}
+};
 
 #endif

@@ -10,6 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "MateriaSource.hpp"
+#include "Character.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
+#include "AMateria.hpp"
+
 int main()
 {
 	IMateriaSource* src = new MateriaSource();
@@ -29,8 +35,32 @@ int main()
 	me->use(0, *bob);
 	me->use(1, *bob);
 
+	std::cout << YELLOW << "---------------------------------------------------" << RESET << std::endl;
+
+	me->use(4, *bob);
+	me->unequip(1);
+	me->unequip(1);
+	me->unequip(4);
+
+	delete tmp;
 	delete bob;
 	delete me;
 	delete src;
+
+/* 	std::cout << YELLOW << "---------------------------------------------------" << RESET << std::endl;
+
+	ICharacter* SpiderMan = new Character("Spider-Man");
+	AMateria* ice = new Ice("ice");
+	AMateria* cure = new Cure("cure");
+
+	SpiderMan->equip(ice);
+	SpiderMan->equip(ice);
+	SpiderMan->equip(cure);
+	SpiderMan->equip(cure);
+
+	delete SpiderMan;
+	delete ice;
+	delete cure; */
+
 	return (0);
 }

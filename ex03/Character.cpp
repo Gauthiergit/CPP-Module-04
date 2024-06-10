@@ -16,14 +16,14 @@ Character::Character() : _name("")
 {
 	std::cout << GREEN << "Default Constructor Character called" << RESET << std::endl;
 	for (int i = 0; i < 4; i++)
-		inventory[i] = nullptr;
+		inventory[i] = NULL;
 }
 
 Character::Character(const std::string name) : _name(name)
 {
-	std::cout << GREEN << "Constructor with parameter Character called" << RESET << std::endl;
+	std::cout << GREEN << "Constructor Character " << BLUE << name << GREEN << " called" << RESET << std::endl;
 	for (int i = 0; i < 4; i++)
-		inventory[i] = nullptr;
+		inventory[i] = NULL;
 }
 
 Character::Character(const Character &copy)
@@ -33,12 +33,12 @@ Character::Character(const Character &copy)
 
 Character::~Character()
 {
-	std::cout << GREEN << "Destructor Character called" << RESET << std::endl;
 	for (int i = 0; i < 4; i++)
 	{
-		if (this->iventory[i])
+		if (this->inventory[i] != NULL)
 			delete this->inventory[i];
 	}
+	std::cout << GREEN << "Destructor Character called" << RESET << std::endl;
 }
 
 Character& Character::operator=(const Character &change)
@@ -48,9 +48,9 @@ Character& Character::operator=(const Character &change)
 	{
 		for (int i = 0; i < 4; i++)
 		{
-			if (this->iventory[i])
+			if (this->inventory[i])
 				delete this->inventory[i];
-			this->inventory[i] = new Character(*change.inventory[i]);
+			this->inventory[i] = this->inventory[i]->clone();
 		}
 	}
 	return (*this);
@@ -64,34 +64,38 @@ std::string const& Character::getName() const
 void Character::equip(AMateria* m)
 {
 	int i = 0;
-	while (this->inventory[i] != nullptr)
+	while (i < 4 && this->inventory[i] != NULL)
 		i++;
 	if (i == 4)
 		std::cout << RED << "Character " << this->_name << " try to equip but there is no place." << RESET << std::endl;
+	else if (m == NULL)
+		std::cout << RED << "There is nothing to equip" << RESET << std::endl;
 	else
 	{
-		std::cout << BLUE << "Character " << this->_name << " equip himself with " <<
-			m->getType() << RESET << std::endl;
+		std::cout << BLUE << "Character " << this->_name << " equips himself with " <<
+			m->getType() << " at the index " << i << RESET << std::endl;
 		this->inventory[i] = m;
 	}
 }
 
 void Character::unequip(int idx)
 {
-	if (idx < 0 || idx > 3)
-		std::cout << RED << "The index is not valid" << RESET << std::endl;
-	else if (this->inventory[idx] == nullptr)
-		std::cout << RED << "There is nothing to unequip at this index" << RESET << std::endl;
+	if (idx < 0 || idx > 3 || this->inventory[idx] == NULL)
+		std::cout << RED << "There is nothing to unequip at the index " << idx << RESET << std::endl;
 	else
 	{
-		std::cout << BLUE << "Character " << this->_name << " unequip " <<
-			his->inventory[idx]->getType() << RESET << std::endl;
-		AMateria *ptrmateria = this->inventory[idx];
-		this->inventory[idx] = nullptr;
+		AMateria **ptrmateria = &this->inventory[idx];
+		(void)(*ptrmateria);
+		std::cout << BLUE << "Character " << this->_name << " unequips " <<
+			this->inventory[idx]->getType() << " from index " << idx << RESET << std::endl;
+		this->inventory[idx] = NULL;
 	}
 }
 
 void Character::use(int idx, ICharacter& target)
 {
-	this->inventory[idx]->use(target);
+	if (idx < 0 || idx > 3 || this->inventory[idx] == NULL)
+		std::cout << RED << "There is nothing to use at the index " << idx << RESET << std::endl;
+	else 
+		this->inventory[idx]->use(target);
 }
