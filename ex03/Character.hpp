@@ -21,9 +21,10 @@ class Character : public ICharacter
 	private:
 	
 	std::string _name;
-	AMateria inventory[4];
+	AMateria* inventory[4];
 
 	public:
+
 	Character();
 	Character(const std::string name);
 	Character(const Character &copy);
@@ -31,7 +32,7 @@ class Character : public ICharacter
 
 	Character& operator=(const Character &change);
 
-	virtual std::string const & getName() const;
+	virtual std::string const& getName() const;
 	virtual void equip(AMateria* m);
 	virtual void unequip(int idx);
 	virtual void use(int idx, ICharacter& target);

@@ -19,9 +19,7 @@ SRCS  = main.cpp \
 		AMateria.cpp \
 		Character.cpp \
 		Cure.cpp \
-		Ice.cpp \
-		ICharacter.cpp \
-		IMateriaSource.cpp \
+		Ice.cpp  \
 		MateriaSource.cpp
 
 OBJ = $(patsubst $(DIR_SRC)%.cpp,$(DIR_OBJ)%.o,$(SRCS))
