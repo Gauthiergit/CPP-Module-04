@@ -23,7 +23,7 @@ Character::Character(const std::string name) : _name(name)
 {
 	std::cout << GREEN << "Constructor Character " << BLUE << name << GREEN << " called" << RESET << std::endl;
 	for (int i = 0; i < 4; i++)
-		inventory[i] = NULL;
+		this->inventory[i] = NULL;
 }
 
 Character::Character(const Character &copy)
@@ -35,8 +35,21 @@ Character::~Character()
 {
 	for (int i = 0; i < 4; i++)
 	{
-		if (this->inventory[i] != NULL)
+		if (this->inventory[i] != NULL && this->inventory[i]->getType() == "cure")
+		{
 			delete this->inventory[i];
+			this->inventory[i] = NULL;
+			break ;
+		}
+	}
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->inventory[i] != NULL && this->inventory[i]->getType() == "ice")
+		{
+			delete this->inventory[i];
+			this->inventory[i] = NULL;
+			break ;
+		}
 	}
 	std::cout << GREEN << "Destructor Character called" << RESET << std::endl;
 }
@@ -44,13 +57,17 @@ Character::~Character()
 Character& Character::operator=(const Character &change)
 {
 	this->_name = change._name;
-	if (this->inventory != change.inventory)
+	if (this != &change)
 	{
 		for (int i = 0; i < 4; i++)
 		{
 			if (this->inventory[i])
+			{
 				delete this->inventory[i];
-			this->inventory[i] = this->inventory[i]->clone();
+				this->inventory[i] = NULL;
+			}
+			if (change.inventory[i])
+				this->inventory[i] = change.inventory[i]->clone();
 		}
 	}
 	return (*this);

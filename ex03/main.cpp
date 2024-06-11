@@ -21,6 +21,9 @@ int main()
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	src->learnMateria(new Cure());
 
 	ICharacter* me = new Character("me");
 
@@ -47,7 +50,7 @@ int main()
 	delete me;
 	delete src;
 
-/* 	std::cout << YELLOW << "---------------------------------------------------" << RESET << std::endl;
+	std::cout << YELLOW << "---------------------------------------------------" << RESET << std::endl;
 
 	ICharacter* SpiderMan = new Character("Spider-Man");
 	AMateria* ice = new Ice("ice");
@@ -56,11 +59,11 @@ int main()
 	SpiderMan->equip(ice);
 	SpiderMan->equip(ice);
 	SpiderMan->equip(cure);
+	SpiderMan->equip(NULL);
+	SpiderMan->equip(cure);
 	SpiderMan->equip(cure);
 
 	delete SpiderMan;
-	delete ice;
-	delete cure; */
 
 	return (0);
 }

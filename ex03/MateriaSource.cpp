@@ -6,7 +6,7 @@
 /*   By: gpeyre <gpeyre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:23:02 by gpeyre            #+#    #+#             */
-/*   Updated: 2024/06/10 19:13:11 by gpeyre           ###   ########.fr       */
+/*   Updated: 2024/06/11 12:42:37 by gpeyre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ MateriaSource::~MateriaSource()
 	std::cout << GREEN << "Destructor MateriaSource called" << RESET << std::endl;
 	for (int i = 0; i < 4; i++)
 	{
-		if (this->stock[i])
+		if (this->stock[i] != NULL)
 			delete this->stock[i];
 	}
 }
@@ -42,7 +42,7 @@ MateriaSource& MateriaSource::operator=(const MateriaSource &change)
 		{
 			if (this->stock[i])
 				delete this->stock[i];
-			this->stock[i] = (this->stock[i])->clone();
+			this->stock[i] = (change.stock[i])->clone();
 		}
 	}
 	return (*this);
@@ -51,12 +51,18 @@ MateriaSource& MateriaSource::operator=(const MateriaSource &change)
 void MateriaSource::learnMateria(AMateria* m)
 {
 	int i = 0;
-	while (this->stock[i] != NULL)
+	while (i < 4 && this->stock[i] != NULL)
 		i++;
 	if (i == 4)
+	{
+		delete m;
 		std::cout << RED << "MateriaSource can't learn about more AMateria." << RESET << std::endl;
-	std::cout << BLUE << "MateriaSource learns about " << m->getType() << RESET << std::endl;
-	this->stock[i] = m;
+	}
+	else
+	{
+		std::cout << BLUE << "MateriaSource learns about " << m->getType() << RESET << std::endl;
+		this->stock[i] = m;
+	}
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type)
