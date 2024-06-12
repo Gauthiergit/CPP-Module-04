@@ -7,8 +7,6 @@ CFLAGS  = -Wall -Wextra -Werror -std=c++98 -g
 
 DIR_OBJ = obj/
 
-DIR_SRC = src/
-
 # Colors
 RESET_COLOR = \033[0m
 BOLD = \033[1m
@@ -22,7 +20,7 @@ SRCS  = main.cpp \
 		WrongAnimal.cpp \
 		WrongCat.cpp
 
-OBJ = $(patsubst $(DIR_SRC)%.cpp,$(DIR_OBJ)%.o,$(SRCS))
+OBJ = $(patsubst %.cpp,$(DIR_OBJ)%.o,$(SRCS))
 
 # Compiling project
 $(NAME): $(OBJ)
@@ -34,8 +32,8 @@ $(NAME): $(OBJ)
 $(DIR_OBJ):
 	@mkdir -p $(DIR_OBJ)
 
-$(DIR_OBJ)%.o: $(DIR_SRC)%.cpp | $(DIR_OBJ)
-	@$(CC) $(CFLAGS) -c $< -o $@
+$(DIR_OBJ)%.o: %.cpp | $(DIR_OBJ)
+	@$(CXX) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
