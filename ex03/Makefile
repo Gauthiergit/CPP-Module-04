@@ -21,7 +21,7 @@ SRCS  = main.cpp \
         MateriaSource.cpp
 
 
-OBJ = $(SRCS: %.cpp=$(DIR_OBJ)%.o)
+OBJ = $(patsubst %.cpp,$(DIR_OBJ)%.o,$(SRCS)
 
 # Compiling project
 $(NAME): $(OBJ)
